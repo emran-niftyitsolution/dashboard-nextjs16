@@ -1,8 +1,9 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Drawer } from "antd";
+import { Button, Drawer } from "antd";
 import React, { useEffect, useState } from "react";
+import { FiX } from "react-icons/fi";
 import Footer from "../footers/Footer";
 import Header from "../headers/Header";
 import Sidebar from "../sidebars/Sidebar";
@@ -55,7 +56,16 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
           header: { display: "none" },
         }}
       >
-        <Sidebar collapsed={false} />
+        <div className="relative">
+          <Button
+            type="text"
+            icon={<FiX className="text-xl" />}
+            onClick={closeDrawer}
+            className="absolute top-4 right-4 z-50"
+            aria-label="Close menu"
+          />
+          <Sidebar collapsed={false} />
+        </div>
       </Drawer>
 
       <div className="flex flex-col flex-1 overflow-hidden">
