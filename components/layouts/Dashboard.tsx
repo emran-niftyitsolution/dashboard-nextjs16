@@ -50,7 +50,10 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
         onClose={closeDrawer}
         open={drawerOpen}
         size={222}
-        styles={{ body: { padding: 0 } }}
+        styles={{
+          body: { padding: 0 },
+          header: { display: "none" },
+        }}
       >
         <Sidebar collapsed={false} />
       </Drawer>
