@@ -17,7 +17,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
       <Sidebar collapsed={collapsed} />
       <div className="flex flex-col flex-1 overflow-hidden">
         <Header collapsed={collapsed} toggleCollapsed={toggleCollapsed} />
-        <main className="rounded-tl-2xl rounded-bl-2xl flex-1 overflow-y-auto bg-gray-100 p-4 md:p-6 shadow-inner">
+        <main className="border border-gray-100 rounded-tl-2xl rounded-bl-2xl flex-1 overflow-y-auto bg-gray-100 p-4 md:p-6 shadow-inner">
           {children}
         </main>
         <Footer />
