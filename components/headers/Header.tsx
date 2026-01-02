@@ -3,7 +3,6 @@ import { FiChevronDown, FiMenu } from "react-icons/fi";
 import { cn } from "../../lib/utils";
 type HeaderProps = {
   toggleCollapsed: () => void;
-  isMobile: boolean;
 };
 
 const items: MenuProps["items"] = [
@@ -52,14 +51,11 @@ const items: MenuProps["items"] = [
   },
 ];
 
-const Header = ({ toggleCollapsed, isMobile }: HeaderProps) => {
+const Header = ({ toggleCollapsed }: HeaderProps) => {
   return (
     <div
       className={cn(
-        "px-10 py-4 flex justify-between items-center sticky top-0 bg-white z-10",
-        {
-          "px-4": isMobile,
-        }
+        "px-4  md:px-10 py-4 flex justify-between items-center sticky top-0 bg-white z-10"
       )}
     >
       <div>
@@ -68,7 +64,7 @@ const Header = ({ toggleCollapsed, isMobile }: HeaderProps) => {
       <Dropdown menu={{ items }} trigger={["click"]}>
         <div className="flex items-center gap-2 cursor-pointer">
           <Avatar>A</Avatar>
-          {!isMobile && <p className="text-sm font-medium">John Doe</p>}
+          <p className="hidden md:block text-sm font-medium">John Doe</p>
           <FiChevronDown className="text-sm" />
         </div>
       </Dropdown>

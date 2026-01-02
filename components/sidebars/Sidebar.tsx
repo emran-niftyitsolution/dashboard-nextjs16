@@ -52,7 +52,12 @@ type SidebarProps = {
 
 const Sidebar = ({ collapsed = false }: SidebarProps) => {
   return (
-    <Sider collapsed={collapsed} theme="light" width={222}>
+    <Sider
+      collapsed={collapsed}
+      theme="light"
+      width={222}
+      className="hidden md:block"
+    >
       <div className="p-4 text-center">
         <p className="text-lg font-medium">My Admin</p>
       </div>

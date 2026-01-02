@@ -11,7 +11,9 @@ import Sidebar from "../sidebars/Sidebar";
 const Dashboard = ({ children }: { children: React.ReactNode }) => {
   const [collapsed, setCollapsed] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" ? window.innerWidth < 768 : false
+  );
 
   useEffect(() => {
     // Check if screen is mobile size
@@ -43,7 +45,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex h-screen bg-white">
       {/* Desktop Sidebar */}
-      {!isMobile && <Sidebar collapsed={collapsed} />}
+      <Sidebar collapsed={collapsed} />
 
       {/* Mobile Drawer */}
       <Drawer
@@ -69,13 +71,10 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
       </Drawer>
 
       <div className="flex flex-col flex-1 overflow-hidden">
-        <Header toggleCollapsed={toggleMenu} isMobile={isMobile} />
+        <Header toggleCollapsed={toggleMenu} />
         <main
           className={cn(
-            "border border-gray-100 rounded-tl-2xl rounded-bl-2xl flex-1 overflow-y-auto bg-gray-100 p-4 md:p-6 shadow-inner",
-            {
-              "rounded-none": isMobile,
-            }
+            "rounded-none border border-gray-100 md:rounded-tl-2xl md:rounded-bl-2xl flex-1 overflow-hidden overflow-y-auto bg-gray-100 p-4 md:p-6 shadow-inner"
           )}
         >
           {children}
