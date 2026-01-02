@@ -1,15 +1,7 @@
 "use client";
 
-import {
-  Avatar,
-  Button,
-  Card,
-  Form,
-  Input,
-  Select,
-  Upload,
-  message,
-} from "antd";
+import Card from "@/components/ui/Card";
+import { Avatar, Button, Form, Input, Select, Upload, message } from "antd";
 import type { UploadChangeParam } from "antd/es/upload";
 import { useState } from "react";
 import { FiCamera, FiMail, FiPhone, FiUser } from "react-icons/fi";
@@ -62,7 +54,7 @@ export default function ProfilePage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column - Profile Card */}
         <div className="lg:col-span-1">
-          <Card className="shadow-sm">
+          <Card>
             <div className="flex flex-col items-center text-center">
               <div className="relative">
                 <Avatar size={120} className="bg-blue-500 text-3xl">
@@ -122,10 +114,7 @@ export default function ProfilePage() {
           </Card>
 
           {/* Account Stats */}
-          <Card className="shadow-sm mt-6">
-            <h3 className="text-base font-semibold mb-4 text-gray-900 dark:text-gray-100">
-              Account Stats
-            </h3>
+          <Card title="Account Stats" className="mt-6">
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-sm text-gray-600 dark:text-gray-400">
@@ -157,10 +146,7 @@ export default function ProfilePage() {
 
         {/* Right Column - Profile Form */}
         <div className="lg:col-span-2">
-          <Card className="shadow-sm">
-            <h3 className="text-lg font-semibold mb-6 text-gray-900 dark:text-gray-100">
-              Personal Information
-            </h3>
+          <Card title="Personal Information">
             <Form
               form={form}
               layout="vertical"
@@ -326,10 +312,7 @@ export default function ProfilePage() {
           </Card>
 
           {/* Security Section */}
-          <Card className="shadow-sm mt-6">
-            <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">
-              Security
-            </h3>
+          <Card title="Security" className="mt-6">
             <div className="space-y-4">
               <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
                 <div>

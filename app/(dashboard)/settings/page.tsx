@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, Switch, Select, Button, Divider, message } from "antd";
+import { Switch, Select, Button, Divider, message } from "antd";
 import { useState } from "react";
 import {
   FiBell,
@@ -12,6 +12,7 @@ import {
   FiDatabase,
   FiTrash2,
 } from "react-icons/fi";
+import Card from "@/components/ui/Card";
 
 export default function SettingsPage() {
   const [emailNotifications, setEmailNotifications] = useState(true);
@@ -48,18 +49,21 @@ export default function SettingsPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Notifications Settings */}
-        <Card className="shadow-sm">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
-              <FiBell className="text-xl text-blue-600 dark:text-blue-400" />
+        <Card
+          title={
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+                <FiBell className="text-xl text-blue-600 dark:text-blue-400" />
+              </div>
+              <div>
+                <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">Notifications</h3>
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  Manage how you receive notifications
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Notifications</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
-                Manage how you receive notifications
-              </p>
-            </div>
-          </div>
+          }
+        >
 
           <Divider />
 
@@ -134,18 +138,21 @@ export default function SettingsPage() {
         </Card>
 
         {/* Privacy & Security */}
-        <Card className="shadow-sm">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-red-100 dark:bg-red-900 flex items-center justify-center">
-              <FiLock className="text-xl text-red-600 dark:text-red-400" />
+        <Card
+          title={
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-red-100 dark:bg-red-900 flex items-center justify-center">
+                <FiLock className="text-xl text-red-600 dark:text-red-400" />
+              </div>
+              <div>
+                <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">Privacy & Security</h3>
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  Control your privacy and security settings
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Privacy & Security</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                Control your privacy and security settings
-              </p>
-            </div>
-          </div>
+          }
+        >
 
           <Divider />
 
@@ -209,18 +216,21 @@ export default function SettingsPage() {
         </Card>
 
         {/* Language & Region */}
-        <Card className="shadow-sm">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-green-100 dark:bg-green-900 flex items-center justify-center">
-              <FiGlobe className="text-xl text-green-600 dark:text-green-400" />
+        <Card
+          title={
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-green-100 dark:bg-green-900 flex items-center justify-center">
+                <FiGlobe className="text-xl text-green-600 dark:text-green-400" />
+              </div>
+              <div>
+                <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">Language & Region</h3>
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  Customize your language and regional settings
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Language & Region</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                Customize your language and regional settings
-              </p>
-            </div>
-          </div>
+          }
+        >
 
           <Divider />
 
@@ -316,18 +326,21 @@ export default function SettingsPage() {
         </Card>
 
         {/* Data & Storage */}
-        <Card className="shadow-sm">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
-              <FiDatabase className="text-xl text-purple-600 dark:text-purple-400" />
+        <Card
+          title={
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
+                <FiDatabase className="text-xl text-purple-600 dark:text-purple-400" />
+              </div>
+              <div>
+                <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">Data & Storage</h3>
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  Manage your data and storage options
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Data & Storage</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                Manage your data and storage options
-              </p>
-            </div>
-          </div>
+          }
+        >
 
           <Divider />
 

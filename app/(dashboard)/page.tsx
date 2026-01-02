@@ -1,7 +1,8 @@
 "use client";
+import Card from "@/components/ui/Card";
 import { cn } from "@/lib/utils";
 import type { TableColumnsType } from "antd";
-import { Avatar, Badge, Card, Progress, Table, Tag } from "antd";
+import { Avatar, Badge, Progress, Table, Tag } from "antd";
 import {
   FiArrowDown,
   FiArrowUp,
@@ -135,7 +136,9 @@ export default function Home() {
       dataIndex: "orderId",
       key: "orderId",
       render: (text) => (
-        <span className="font-medium text-blue-600 dark:text-blue-400">{text}</span>
+        <span className="font-medium text-blue-600 dark:text-blue-400">
+          {text}
+        </span>
       ),
     },
     {
@@ -210,13 +213,12 @@ export default function Home() {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat, index) => (
-          <Card
-            key={index}
-            className="shadow-sm hover:shadow-md transition-shadow"
-          >
+          <Card key={index} hoverable>
             <div className="flex items-start justify-between">
               <div className="flex-1">
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">{stat.title}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
+                  {stat.title}
+                </p>
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                   {stat.value}
                 </h3>
@@ -229,12 +231,16 @@ export default function Home() {
                   <span
                     className={cn(
                       "text-sm font-medium",
-                      stat.isPositive ? "text-green-500 dark:text-green-400" : "text-red-500 dark:text-red-400"
+                      stat.isPositive
+                        ? "text-green-500 dark:text-green-400"
+                        : "text-red-500 dark:text-red-400"
                     )}
                   >
                     {stat.change}
                   </span>
-                  <span className="text-xs text-gray-400 dark:text-gray-500">vs last period</span>
+                  <span className="text-xs text-gray-400 dark:text-gray-500">
+                    vs last period
+                  </span>
                 </div>
               </div>
               <div className={cn("p-3 rounded-lg", stat.bgColor)}>
@@ -250,13 +256,8 @@ export default function Home() {
         {/* Recent Orders - Takes 2 columns */}
         <div className="lg:col-span-2">
           <Card
-            title={
-              <div className="flex items-center justify-between">
-                <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">Recent Orders</span>
-                <Badge count={ordersData.length} showZero color="#1890ff" />
-              </div>
-            }
-            className="shadow-sm"
+            title="Recent Orders"
+            extra={<Badge count={ordersData.length} showZero color="#1890ff" />}
           >
             <div className="overflow-x-auto">
               <Table
@@ -276,10 +277,9 @@ export default function Home() {
             title={
               <div className="flex items-center gap-2">
                 <FiPackage className="text-blue-500 dark:text-blue-400" />
-                <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">Top Products</span>
+                <span>Top Products</span>
               </div>
             }
-            className="shadow-sm"
           >
             <div className="space-y-4">
               {topProducts.map((product, index) => (
@@ -320,12 +320,7 @@ export default function Home() {
       {/* Sales Analytics */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Sales by Category */}
-        <Card
-          title={
-            <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">Sales by Category</span>
-          }
-          className="shadow-sm"
-        >
+        <Card title="Sales by Category">
           <div className="space-y-4">
             {[
               { name: "Electronics", value: 45, color: "#3b82f6" },
@@ -353,10 +348,7 @@ export default function Home() {
         </Card>
 
         {/* Recent Activity */}
-        <Card
-          title={<span className="text-lg font-semibold text-gray-900 dark:text-gray-100">Recent Activity</span>}
-          className="shadow-sm"
-        >
+        <Card title="Recent Activity">
           <div className="space-y-4">
             {[
               {
@@ -394,11 +386,16 @@ export default function Home() {
                 <div
                   className={cn(
                     "w-8 h-8 rounded-full flex items-center justify-center shrink-0",
-                    activity.type === "order" && "bg-blue-100 dark:bg-blue-900/30",
-                    activity.type === "alert" && "bg-red-100 dark:bg-red-900/30",
-                    activity.type === "user" && "bg-green-100 dark:bg-green-900/30",
-                    activity.type === "payment" && "bg-purple-100 dark:bg-purple-900/30",
-                    activity.type === "review" && "bg-orange-100 dark:bg-orange-900/30"
+                    activity.type === "order" &&
+                      "bg-blue-100 dark:bg-blue-900/30",
+                    activity.type === "alert" &&
+                      "bg-red-100 dark:bg-red-900/30",
+                    activity.type === "user" &&
+                      "bg-green-100 dark:bg-green-900/30",
+                    activity.type === "payment" &&
+                      "bg-purple-100 dark:bg-purple-900/30",
+                    activity.type === "review" &&
+                      "bg-orange-100 dark:bg-orange-900/30"
                   )}
                 >
                   <span className="text-xs font-semibold text-gray-900 dark:text-gray-100">
