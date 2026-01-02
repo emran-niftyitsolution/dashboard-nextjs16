@@ -65,6 +65,32 @@ export default function ThemeProvider({
             colorPrimary: "#3b82f6",
             borderRadius: 8,
           },
+          components: {
+            Input: {
+              colorBgContainer: isDarkMode ? "#1f2937" : "#ffffff",
+              colorBorder: isDarkMode ? "#374151" : "#d9d9d9",
+            },
+            InputNumber: {
+              colorBgContainer: isDarkMode ? "#1f2937" : "#ffffff",
+              colorBorder: isDarkMode ? "#374151" : "#d9d9d9",
+            },
+            Select: {
+              colorBgContainer: isDarkMode ? "#1f2937" : "#ffffff",
+              colorBorder: isDarkMode ? "#374151" : "#d9d9d9",
+            },
+            DatePicker: {
+              colorBgContainer: isDarkMode ? "#1f2937" : "#ffffff",
+              colorBorder: isDarkMode ? "#374151" : "#d9d9d9",
+            },
+            TimePicker: {
+              colorBgContainer: isDarkMode ? "#1f2937" : "#ffffff",
+              colorBorder: isDarkMode ? "#374151" : "#d9d9d9",
+            },
+            Mentions: {
+              colorBgContainer: isDarkMode ? "#1f2937" : "#ffffff",
+              colorBorder: isDarkMode ? "#374151" : "#d9d9d9",
+            },
+          },
         }}
       >
         {children}
