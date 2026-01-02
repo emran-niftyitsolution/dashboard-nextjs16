@@ -4,16 +4,16 @@ import {
   ContainerOutlined,
   DesktopOutlined,
   MailOutlined,
-  PieChartOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Menu, Switch } from "antd";
 import Sider from "antd/es/layout/Sider";
+import { LuLayoutDashboard } from "react-icons/lu";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
 const items: MenuItem[] = [
-  { key: "1", icon: <PieChartOutlined />, label: "Option 1" },
+  { key: "1", icon: <LuLayoutDashboard />, label: "Dashboard" },
   { key: "2", icon: <DesktopOutlined />, label: "Option 2" },
   { key: "3", icon: <ContainerOutlined />, label: "Option 3" },
   {
