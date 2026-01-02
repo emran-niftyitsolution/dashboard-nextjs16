@@ -9,6 +9,7 @@ import type { MenuProps } from "antd";
 import { Menu, Switch } from "antd";
 import Sider from "antd/es/layout/Sider";
 import { LuLayoutDashboard } from "react-icons/lu";
+import { TbBrandReact } from "react-icons/tb";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -65,8 +66,9 @@ const Sidebar = ({
       className="flex md:flex-col h-screen"
     >
       <div className="flex flex-col h-full">
-        <div className="p-4 text-center">
-          <p className="text-lg font-medium">My Admin</p>
+        <div className="p-4 text-center flex gap-2 items-center justify-center">
+          <TbBrandReact className="text-2xl text-purple-500" />
+          {!collapsed && <p className="text-lg font-bold uppercase">Dashify</p>}
         </div>
 
         <div className="flex-1 overflow-hidden overflow-y-auto">
