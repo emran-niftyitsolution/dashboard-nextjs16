@@ -11,7 +11,6 @@ import {
   FiSun,
   FiUser,
 } from "react-icons/fi";
-import { cn } from "../../lib/utils";
 import { useTheme } from "../providers/ThemeProvider";
 
 type HeaderProps = {
@@ -60,25 +59,14 @@ const Header = ({ toggleCollapsed, openDrawer }: HeaderProps) => {
     },
   ];
   return (
-    <div
-      className={cn(
-        "px-4 md:px-10 py-4 flex justify-between items-center sticky top-0 z-10 transition-colors duration-200",
-        isDarkMode ? "bg-gray-900 " : "bg-white "
-      )}
-    >
+    <div className="px-4 md:px-10 py-4 flex justify-between items-center sticky top-0 z-10 bg-white dark:bg-gray-900 transition-colors duration-200">
       <div>
         <FiMenu
-          className={cn(
-            "hidden md:block text-2xl cursor-pointer",
-            isDarkMode ? "text-gray-300" : "text-gray-700"
-          )}
+          className="hidden md:block text-2xl cursor-pointer text-gray-700 dark:text-gray-300"
           onClick={toggleCollapsed}
         />
         <FiMenu
-          className={cn(
-            "block md:hidden text-2xl cursor-pointer",
-            isDarkMode ? "text-gray-300" : "text-gray-700"
-          )}
+          className="block md:hidden text-2xl cursor-pointer text-gray-700 dark:text-gray-300"
           onClick={openDrawer}
         />
       </div>
@@ -107,20 +95,10 @@ const Header = ({ toggleCollapsed, openDrawer }: HeaderProps) => {
         >
           <div className="flex items-center gap-2 cursor-pointer">
             <Avatar>A</Avatar>
-            <p
-              className={cn(
-                "hidden md:block text-sm font-medium",
-                isDarkMode ? "text-gray-100" : "text-gray-900"
-              )}
-            >
+            <p className="hidden md:block text-sm font-medium text-gray-900 dark:text-gray-100">
               John Doe
             </p>
-            <FiChevronDown
-              className={cn(
-                "text-sm",
-                isDarkMode ? "text-gray-300" : "text-gray-700"
-              )}
-            />
+            <FiChevronDown className="text-sm text-gray-700 dark:text-gray-300" />
           </div>
         </Dropdown>
       </div>

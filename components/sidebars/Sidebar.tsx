@@ -1,5 +1,4 @@
 "use client";
-import { cn } from "@/lib/utils";
 import {
   AppstoreOutlined,
   ContainerOutlined,
@@ -11,7 +10,6 @@ import { Menu, Switch } from "antd";
 import Sider from "antd/es/layout/Sider";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { TbBrandReact } from "react-icons/tb";
-import { useTheme } from "../providers/ThemeProvider";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -60,22 +58,20 @@ const Sidebar = ({
   showFooter = true,
   onFooterToggle,
 }: SidebarProps) => {
-  const { isDarkMode } = useTheme();
-
   return (
     <Sider
       collapsed={collapsed}
-      theme={isDarkMode ? "dark" : "light"}
       width={222}
-      className={cn(
-        "flex md:flex-col h-screen transition-colors duration-200",
-        isDarkMode ? "bg-gray-900!" : "bg-white!"
-      )}
+      className="flex md:flex-col h-screen bg-white dark:bg-gray-900 transition-colors duration-200"
     >
       <div className="flex flex-col h-full">
         <div className="p-4 text-center flex gap-2 items-center justify-center">
           <TbBrandReact className="text-2xl text-purple-500 dark:text-purple-400" />
-          {!collapsed && <p className="text-lg font-bold uppercase">Dashify</p>}
+          {!collapsed && (
+            <p className="text-lg font-bold uppercase text-gray-900 dark:text-gray-100">
+              Dashify
+            </p>
+          )}
         </div>
 
         <div className="flex-1 overflow-hidden overflow-y-auto">
@@ -83,17 +79,20 @@ const Sidebar = ({
             defaultSelectedKeys={["1"]}
             defaultOpenKeys={["sub1"]}
             mode="inline"
-            theme={isDarkMode ? "dark" : "light"}
             inlineCollapsed={collapsed}
             items={items}
-            style={{ borderRight: "none" }}
+            className="bg-white dark:bg-gray-900 border-r-0"
           />
         </div>
 
         {/* Footer Toggle */}
         <div className="p-4">
           <div className="flex items-center justify-between">
-            {!collapsed && <span className="text-sm">Show Footer</span>}
+            {!collapsed && (
+              <span className="text-sm text-gray-600 dark:text-gray-400">
+                Show Footer
+              </span>
+            )}
             <Switch
               checked={showFooter}
               onChange={(checked) => onFooterToggle?.(checked)}

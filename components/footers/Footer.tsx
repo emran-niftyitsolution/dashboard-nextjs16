@@ -1,40 +1,17 @@
-"use client";
-
-import { cn } from "@/lib/utils";
-import { useTheme } from "../providers/ThemeProvider";
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const { isDarkMode } = useTheme();
 
   return (
-    <div
-      className={cn(
-        "px-10 py-3 flex justify-between items-center sticky bottom-0 z-10 transition-colors duration-200",
-        isDarkMode ? "bg-gray-900 " : "bg-white "
-      )}
-    >
+    <div className="px-10 py-3 flex justify-between items-center sticky bottom-0 z-10 bg-white dark:bg-gray-900 transition-colors duration-200">
       <div>
-        <p
-          className={cn(
-            "text-xs md:text-sm",
-            isDarkMode ? "text-gray-400" : "text-gray-500"
-          )}
-        >
+        <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400">
           © {currentYear} Dashboard. All rights reserved.
         </p>
       </div>
       <div>
-        <p
-          className={cn(
-            "text-xs md:text-sm",
-            isDarkMode ? "text-gray-400" : "text-gray-500"
-          )}
-        >
+        <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400">
           Powered by{" "}
-          <span className={isDarkMode ? "text-blue-400" : "text-blue-500"}>
-            Emran
-          </span>
+          <span className="text-blue-500 dark:text-blue-400">Emran</span>
         </p>
       </div>
     </div>
