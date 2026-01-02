@@ -1,58 +1,60 @@
+"use client";
+
 import { Avatar, Dropdown, type MenuProps } from "antd";
-import { FiChevronDown, FiMenu } from "react-icons/fi";
+import { useRouter } from "next/navigation";
+import {
+  FiChevronDown,
+  FiLogOut,
+  FiMenu,
+  FiSettings,
+  FiUser,
+} from "react-icons/fi";
 import { cn } from "../../lib/utils";
+
 type HeaderProps = {
   toggleCollapsed: () => void;
   openDrawer: () => void;
 };
 
-const items: MenuProps["items"] = [
-  {
-    key: "1",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.antgroup.com"
-      >
-        1st menu item
-      </a>
-    ),
-  },
-  {
-    key: "2",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.aliyun.com"
-      >
-        2nd menu item (disabled)
-      </a>
-    ),
-    disabled: true,
-  },
-  {
-    key: "3",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.luohanacademy.com"
-      >
-        3rd menu item (disabled)
-      </a>
-    ),
-    disabled: true,
-  },
-  {
-    key: "4",
-    danger: true,
-    label: "a danger item",
-  },
-];
-
 const Header = ({ toggleCollapsed, openDrawer }: HeaderProps) => {
+  const router = useRouter();
+
+  const handleMenuClick = ({ key }: { key: string }) => {
+    if (key === "logout") {
+      // Clear any auth tokens/session here
+      // localStorage.removeItem('token');
+      // sessionStorage.clear();
+
+      // Redirect to login
+      router.push("/login");
+    } else if (key === "profile") {
+      router.push("/dashboard/profile");
+    } else if (key === "settings") {
+      router.push("/dashboard/settings");
+    }
+  };
+
+  const items: MenuProps["items"] = [
+    {
+      key: "profile",
+      label: "Profile",
+      icon: <FiUser className="text-base" />,
+    },
+    {
+      key: "settings",
+      label: "Settings",
+      icon: <FiSettings className="text-base" />,
+    },
+    {
+      type: "divider",
+    },
+    {
+      key: "logout",
+      label: "Logout",
+      icon: <FiLogOut className="text-base" />,
+      danger: true,
+    },
+  ];
   return (
     <div
       className={cn(
@@ -69,7 +71,11 @@ const Header = ({ toggleCollapsed, openDrawer }: HeaderProps) => {
           onClick={openDrawer}
         />
       </div>
-      <Dropdown menu={{ items }} trigger={["click"]}>
+      <Dropdown
+        menu={{ items, onClick: handleMenuClick }}
+        trigger={["click"]}
+        placement="bottomRight"
+      >
         <div className="flex items-center gap-2 cursor-pointer">
           <Avatar>A</Avatar>
           <p className="hidden md:block text-sm font-medium">John Doe</p>
