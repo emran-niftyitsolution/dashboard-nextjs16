@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "@/lib/utils";
 import {
   AppstoreOutlined,
   ContainerOutlined,
@@ -10,6 +11,7 @@ import { Menu, Switch } from "antd";
 import Sider from "antd/es/layout/Sider";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { TbBrandReact } from "react-icons/tb";
+import { useTheme } from "../providers/ThemeProvider";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -58,17 +60,41 @@ const Sidebar = ({
   showFooter = true,
   onFooterToggle,
 }: SidebarProps) => {
+  const { isDarkMode } = useTheme();
+
   return (
     <Sider
       collapsed={collapsed}
-      theme="light"
+      theme={isDarkMode ? "dark" : "light"}
       width={222}
-      className="flex md:flex-col h-screen"
+      className={cn(
+        "flex md:flex-col h-screen transition-colors duration-200",
+        isDarkMode ? "bg-gray-900!" : "bg-white!"
+      )}
     >
       <div className="flex flex-col h-full">
-        <div className="p-4 text-center flex gap-2 items-center justify-center">
-          <TbBrandReact className="text-2xl text-purple-500" />
-          {!collapsed && <p className="text-lg font-bold uppercase">Dashify</p>}
+        <div
+          className={cn(
+            "p-4 text-center flex gap-2 items-center justify-center border-b transition-colors duration-200",
+            isDarkMode ? "border-gray-700" : "border-gray-200"
+          )}
+        >
+          <TbBrandReact
+            className={cn(
+              "text-2xl",
+              isDarkMode ? "text-purple-400" : "text-purple-500"
+            )}
+          />
+          {!collapsed && (
+            <p
+              className={cn(
+                "text-lg font-bold uppercase",
+                isDarkMode ? "text-gray-100" : "text-gray-900"
+              )}
+            >
+              Dashify
+            </p>
+          )}
         </div>
 
         <div className="flex-1 overflow-hidden overflow-y-auto">
@@ -76,7 +102,7 @@ const Sidebar = ({
             defaultSelectedKeys={["1"]}
             defaultOpenKeys={["sub1"]}
             mode="inline"
-            theme="light"
+            theme={isDarkMode ? "dark" : "light"}
             inlineCollapsed={collapsed}
             items={items}
             style={{ borderRight: "none" }}
@@ -84,10 +110,22 @@ const Sidebar = ({
         </div>
 
         {/* Footer Toggle */}
-        <div className="p-4">
+        <div
+          className={cn(
+            "p-4 border-t transition-colors duration-200",
+            isDarkMode ? "border-gray-700" : "border-gray-200"
+          )}
+        >
           <div className="flex items-center justify-between">
             {!collapsed && (
-              <span className="text-sm text-gray-600">Show Footer</span>
+              <span
+                className={cn(
+                  "text-sm",
+                  isDarkMode ? "text-gray-300" : "text-gray-600"
+                )}
+              >
+                Show Footer
+              </span>
             )}
             <Switch
               checked={showFooter}

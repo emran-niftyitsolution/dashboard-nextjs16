@@ -78,7 +78,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       {isLoading && <Loader />}
-      <div className="flex h-screen bg-white">
+      <div className="flex h-screen bg-white dark:bg-gray-900 transition-colors">
         {/* Desktop Sidebar */}
         <div className="hidden md:block">
           <Sidebar
@@ -121,7 +121,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
           <Header toggleCollapsed={toggleMenu} openDrawer={openDrawer} />
           <main
             className={cn(
-              "rounded-none border border-gray-100 md:rounded-tl-2xl flex-1 overflow-hidden overflow-y-auto bg-gray-100 p-4 md:p-6 shadow-inner",
+              "rounded-none border border-gray-100 dark:border-gray-800 md:rounded-tl-2xl flex-1 overflow-hidden overflow-y-auto bg-gray-100 dark:bg-gray-800 p-4 md:p-6 shadow-inner transition-colors",
               {
                 "rounded-bl-none": !showFooter,
                 "md:rounded-bl-2xl": showFooter,

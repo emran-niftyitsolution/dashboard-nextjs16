@@ -10,14 +10,27 @@ import {
   Upload,
   message,
 } from "antd";
+import type { UploadChangeParam } from "antd/es/upload";
 import { useState } from "react";
 import { FiCamera, FiMail, FiPhone, FiUser } from "react-icons/fi";
 
+interface ProfileFormValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  company?: string;
+  role?: string;
+  country?: string;
+  timezone?: string;
+  bio?: string;
+}
+
 export default function ProfilePage() {
-  const [form] = Form.useForm();
+  const [form] = Form.useForm<ProfileFormValues>();
   const [loading, setLoading] = useState(false);
 
-  const onFinish = async (values: any) => {
+  const onFinish = async (values: ProfileFormValues) => {
     setLoading(true);
     console.log("Profile values:", values);
 
@@ -28,7 +41,7 @@ export default function ProfilePage() {
     }, 1000);
   };
 
-  const handleAvatarChange = (info: any) => {
+  const handleAvatarChange = (info: UploadChangeParam) => {
     if (info.file.status === "done") {
       message.success("Avatar updated successfully!");
     }
@@ -38,8 +51,10 @@ export default function ProfilePage() {
     <div className="space-y-6">
       {/* Page Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Profile Settings</h1>
-        <p className="text-sm text-gray-500 mt-1">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+          Profile Settings
+        </h1>
+        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
           Manage your personal information and preferences
         </p>
       </div>
@@ -71,20 +86,36 @@ export default function ProfilePage() {
                   />
                 </Upload>
               </div>
-              <h2 className="text-xl font-semibold mt-4">John Doe</h2>
-              <p className="text-gray-500 text-sm">john.doe@example.com</p>
+              <h2 className="text-xl font-semibold mt-4 text-gray-900 dark:text-gray-100">
+                John Doe
+              </h2>
+              <p className="text-gray-500 dark:text-gray-400 text-sm">
+                john.doe@example.com
+              </p>
               <div className="mt-4 w-full">
-                <div className="flex items-center justify-between py-2 border-b border-gray-200">
-                  <span className="text-sm text-gray-600">User ID</span>
-                  <span className="text-sm font-medium">#12345</span>
+                <div className="flex items-center justify-between py-2 border-b border-gray-200 dark:border-gray-700">
+                  <span className="text-sm text-gray-600 dark:text-gray-400">
+                    User ID
+                  </span>
+                  <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                    #12345
+                  </span>
                 </div>
-                <div className="flex items-center justify-between py-2 border-b border-gray-200">
-                  <span className="text-sm text-gray-600">Role</span>
-                  <span className="text-sm font-medium">Administrator</span>
+                <div className="flex items-center justify-between py-2 border-b border-gray-200 dark:border-gray-700">
+                  <span className="text-sm text-gray-600 dark:text-gray-400">
+                    Role
+                  </span>
+                  <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                    Administrator
+                  </span>
                 </div>
                 <div className="flex items-center justify-between py-2">
-                  <span className="text-sm text-gray-600">Member Since</span>
-                  <span className="text-sm font-medium">Jan 2024</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-400">
+                    Member Since
+                  </span>
+                  <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                    Jan 2024
+                  </span>
                 </div>
               </div>
             </div>
@@ -92,21 +123,33 @@ export default function ProfilePage() {
 
           {/* Account Stats */}
           <Card className="shadow-sm mt-6">
-            <h3 className="text-base font-semibold mb-4">Account Stats</h3>
+            <h3 className="text-base font-semibold mb-4 text-gray-900 dark:text-gray-100">
+              Account Stats
+            </h3>
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600">Total Orders</span>
-                <span className="text-lg font-bold text-blue-600">1,234</span>
+                <span className="text-sm text-gray-600 dark:text-gray-400">
+                  Total Orders
+                </span>
+                <span className="text-lg font-bold text-blue-600 dark:text-blue-400">
+                  1,234
+                </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600">Total Revenue</span>
-                <span className="text-lg font-bold text-green-600">
+                <span className="text-sm text-gray-600 dark:text-gray-400">
+                  Total Revenue
+                </span>
+                <span className="text-lg font-bold text-green-600 dark:text-green-400">
                   $45,231
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600">Active Projects</span>
-                <span className="text-lg font-bold text-purple-600">12</span>
+                <span className="text-sm text-gray-600 dark:text-gray-400">
+                  Active Projects
+                </span>
+                <span className="text-lg font-bold text-purple-600 dark:text-purple-400">
+                  12
+                </span>
               </div>
             </div>
           </Card>
@@ -115,7 +158,9 @@ export default function ProfilePage() {
         {/* Right Column - Profile Form */}
         <div className="lg:col-span-2">
           <Card className="shadow-sm">
-            <h3 className="text-lg font-semibold mb-6">Personal Information</h3>
+            <h3 className="text-lg font-semibold mb-6 text-gray-900 dark:text-gray-100">
+              Personal Information
+            </h3>
             <Form
               form={form}
               layout="vertical"
@@ -282,32 +327,38 @@ export default function ProfilePage() {
 
           {/* Security Section */}
           <Card className="shadow-sm mt-6">
-            <h3 className="text-lg font-semibold mb-4">Security</h3>
+            <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">
+              Security
+            </h3>
             <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+              <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
                 <div>
-                  <h4 className="font-medium text-gray-900">Password</h4>
-                  <p className="text-sm text-gray-500">
+                  <h4 className="font-medium text-gray-900 dark:text-gray-100">
+                    Password
+                  </h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                     Last changed 3 months ago
                   </p>
                 </div>
                 <Button className="rounded-xl">Change Password</Button>
               </div>
-              <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+              <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
                 <div>
-                  <h4 className="font-medium text-gray-900">
+                  <h4 className="font-medium text-gray-900 dark:text-gray-100">
                     Two-Factor Authentication
                   </h4>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                     Add an extra layer of security
                   </p>
                 </div>
                 <Button className="rounded-xl">Enable 2FA</Button>
               </div>
-              <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+              <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
                 <div>
-                  <h4 className="font-medium text-gray-900">Active Sessions</h4>
-                  <p className="text-sm text-gray-500">
+                  <h4 className="font-medium text-gray-900 dark:text-gray-100">
+                    Active Sessions
+                  </h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                     Manage your active sessions
                   </p>
                 </div>

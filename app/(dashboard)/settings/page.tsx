@@ -40,8 +40,8 @@ export default function SettingsPage() {
     <div className="space-y-6">
       {/* Page Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Settings</h1>
-        <p className="text-sm text-gray-500 mt-1">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Settings</h1>
+        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
           Manage your account settings and preferences
         </p>
       </div>
@@ -50,12 +50,12 @@ export default function SettingsPage() {
         {/* Notifications Settings */}
         <Card className="shadow-sm">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center">
-              <FiBell className="text-xl text-blue-600" />
+            <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+              <FiBell className="text-xl text-blue-600 dark:text-blue-400" />
             </div>
             <div>
-              <h3 className="text-lg font-semibold">Notifications</h3>
-              <p className="text-sm text-gray-500">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Notifications</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 Manage how you receive notifications
               </p>
             </div>
@@ -68,8 +68,8 @@ export default function SettingsPage() {
               <div className="flex items-center gap-3">
                 <FiMail className="text-gray-400" />
                 <div>
-                  <p className="font-medium text-gray-900">Email Notifications</p>
-                  <p className="text-xs text-gray-500">
+                  <p className="font-medium text-gray-900 dark:text-gray-100">Email Notifications</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
                     Receive notifications via email
                   </p>
                 </div>
@@ -84,8 +84,8 @@ export default function SettingsPage() {
               <div className="flex items-center gap-3">
                 <FiBell className="text-gray-400" />
                 <div>
-                  <p className="font-medium text-gray-900">Push Notifications</p>
-                  <p className="text-xs text-gray-500">
+                  <p className="font-medium text-gray-900 dark:text-gray-100">Push Notifications</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
                     Receive push notifications on your device
                   </p>
                 </div>
@@ -136,12 +136,12 @@ export default function SettingsPage() {
         {/* Privacy & Security */}
         <Card className="shadow-sm">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center">
-              <FiLock className="text-xl text-red-600" />
+            <div className="w-10 h-10 rounded-xl bg-red-100 dark:bg-red-900 flex items-center justify-center">
+              <FiLock className="text-xl text-red-600 dark:text-red-400" />
             </div>
             <div>
-              <h3 className="text-lg font-semibold">Privacy & Security</h3>
-              <p className="text-sm text-gray-500">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Privacy & Security</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                 Control your privacy and security settings
               </p>
             </div>
@@ -150,11 +150,11 @@ export default function SettingsPage() {
           <Divider />
 
           <div className="space-y-4">
-            <div className="p-4 bg-gray-50 rounded-xl">
+            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
               <div className="flex items-start gap-3">
                 <FiShield className="text-xl text-gray-600 mt-1" />
                 <div className="flex-1">
-                  <h4 className="font-medium text-gray-900 mb-1">
+                  <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-1">
                     Two-Factor Authentication
                   </h4>
                   <p className="text-sm text-gray-500 mb-3">
@@ -167,11 +167,11 @@ export default function SettingsPage() {
               </div>
             </div>
 
-            <div className="p-4 bg-gray-50 rounded-xl">
+            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
               <div className="flex items-start gap-3">
                 <FiEye className="text-xl text-gray-600 mt-1" />
                 <div className="flex-1">
-                  <h4 className="font-medium text-gray-900 mb-1">
+                  <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-1">
                     Profile Visibility
                   </h4>
                   <p className="text-sm text-gray-500 mb-3">
@@ -191,11 +191,11 @@ export default function SettingsPage() {
               </div>
             </div>
 
-            <div className="p-4 bg-gray-50 rounded-xl">
+            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
               <div className="flex items-start gap-3">
                 <FiLock className="text-xl text-gray-600 mt-1" />
                 <div className="flex-1">
-                  <h4 className="font-medium text-gray-900 mb-1">
+                  <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-1">
                     Active Sessions
                   </h4>
                   <p className="text-sm text-gray-500 mb-3">
@@ -211,12 +211,12 @@ export default function SettingsPage() {
         {/* Language & Region */}
         <Card className="shadow-sm">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center">
-              <FiGlobe className="text-xl text-green-600" />
+            <div className="w-10 h-10 rounded-xl bg-green-100 dark:bg-green-900 flex items-center justify-center">
+              <FiGlobe className="text-xl text-green-600 dark:text-green-400" />
             </div>
             <div>
-              <h3 className="text-lg font-semibold">Language & Region</h3>
-              <p className="text-sm text-gray-500">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Language & Region</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                 Customize your language and regional settings
               </p>
             </div>
@@ -226,7 +226,7 @@ export default function SettingsPage() {
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Language
               </label>
               <Select
@@ -246,7 +246,7 @@ export default function SettingsPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Currency
               </label>
               <Select
@@ -266,7 +266,7 @@ export default function SettingsPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Date Format
               </label>
               <Select
@@ -284,7 +284,7 @@ export default function SettingsPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Timezone
               </label>
               <Select
@@ -318,12 +318,12 @@ export default function SettingsPage() {
         {/* Data & Storage */}
         <Card className="shadow-sm">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center">
-              <FiDatabase className="text-xl text-purple-600" />
+            <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
+              <FiDatabase className="text-xl text-purple-600 dark:text-purple-400" />
             </div>
             <div>
-              <h3 className="text-lg font-semibold">Data & Storage</h3>
-              <p className="text-sm text-gray-500">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Data & Storage</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                 Manage your data and storage options
               </p>
             </div>
@@ -332,12 +332,12 @@ export default function SettingsPage() {
           <Divider />
 
           <div className="space-y-4">
-            <div className="p-4 bg-gray-50 rounded-xl">
+            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium text-gray-700">
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   Storage Used
                 </span>
-                <span className="text-sm font-bold text-gray-900">
+                <span className="text-sm font-bold text-gray-900 dark:text-gray-100">
                   2.4 GB / 10 GB
                 </span>
               </div>
@@ -350,10 +350,10 @@ export default function SettingsPage() {
             </div>
 
             <div className="space-y-3">
-              <div className="flex items-center justify-between p-3 border border-gray-200 rounded-xl">
+              <div className="flex items-center justify-between p-3 border border-gray-200 dark:border-gray-700 rounded-xl">
                 <div>
-                  <p className="font-medium text-gray-900">Cache</p>
-                  <p className="text-xs text-gray-500">142 MB</p>
+                  <p className="font-medium text-gray-900 dark:text-gray-100">Cache</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">142 MB</p>
                 </div>
                 <Button
                   size="small"
@@ -364,20 +364,20 @@ export default function SettingsPage() {
                 </Button>
               </div>
 
-              <div className="flex items-center justify-between p-3 border border-gray-200 rounded-xl">
+              <div className="flex items-center justify-between p-3 border border-gray-200 dark:border-gray-700 rounded-xl">
                 <div>
-                  <p className="font-medium text-gray-900">Documents</p>
-                  <p className="text-xs text-gray-500">1.8 GB</p>
+                  <p className="font-medium text-gray-900 dark:text-gray-100">Documents</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">1.8 GB</p>
                 </div>
                 <Button size="small" className="rounded-xl">
                   Manage
                 </Button>
               </div>
 
-              <div className="flex items-center justify-between p-3 border border-gray-200 rounded-xl">
+              <div className="flex items-center justify-between p-3 border border-gray-200 dark:border-gray-700 rounded-xl">
                 <div>
-                  <p className="font-medium text-gray-900">Media Files</p>
-                  <p className="text-xs text-gray-500">486 MB</p>
+                  <p className="font-medium text-gray-900 dark:text-gray-100">Media Files</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">486 MB</p>
                 </div>
                 <Button size="small" className="rounded-xl">
                   Manage

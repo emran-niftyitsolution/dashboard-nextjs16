@@ -18,9 +18,9 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex bg-white dark:bg-gray-900 transition-colors">
       {/* Left Side - Branding/Image */}
-      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-gray-100">
+      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-gray-100 dark:bg-gray-800">
         {/* Background Image */}
         <Image
           src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069"
@@ -69,12 +69,12 @@ export default function LoginPage() {
       </div>
 
       {/* Right Side - Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-white">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-white dark:bg-gray-900 transition-colors">
         <div className="w-full max-w-md">
           {/* Logo/Brand */}
           <div className="mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">Sign In</h2>
-            <p className="text-gray-600">Enter your credentials to access your account</p>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">Sign In</h2>
+            <p className="text-gray-600 dark:text-gray-400">Enter your credentials to access your account</p>
           </div>
 
           {/* Form */}
@@ -140,10 +140,10 @@ export default function LoginPage() {
           {/* Divider */}
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300"></div>
+              <div className="w-full border-t border-gray-300 dark:border-gray-700"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-white text-gray-500">Or continue with</span>
+              <span className="px-4 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-400">Or continue with</span>
             </div>
           </div>
 
@@ -175,9 +175,9 @@ export default function LoginPage() {
           </div>
 
           {/* Sign Up Link */}
-          <p className="text-center text-gray-600">
+          <p className="text-center text-gray-600 dark:text-gray-400">
             Don&apos;t have an account?{" "}
-            <Link href="/signup" className="text-blue-600 hover:text-blue-700 font-medium">
+            <Link href="/signup" className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium">
               Sign up for free
             </Link>
           </p>

@@ -18,8 +18,8 @@ export default function ForgotPasswordPage() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-8 bg-gradient-to-br from-blue-50 to-purple-50">
-        <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
+      <div className="min-h-screen flex items-center justify-center p-8 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800">
+        <div className="w-full max-w-md bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 border border-gray-200 dark:border-gray-700">
           <Result
             status="success"
             title="Check Your Email"
@@ -43,14 +43,14 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex bg-white dark:bg-gray-900 transition-colors">
       {/* Left Side - Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-white">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-white dark:bg-gray-900 transition-colors">
         <div className="w-full max-w-md">
           {/* Back Link */}
           <Link
             href="/login"
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8"
+            className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 mb-8"
           >
             <FiArrowLeft />
             <span>Back to login</span>
@@ -58,8 +58,8 @@ export default function ForgotPasswordPage() {
 
           {/* Logo/Brand */}
           <div className="mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">Forgot Password?</h2>
-            <p className="text-gray-600">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">Forgot Password?</h2>
+            <p className="text-gray-600 dark:text-gray-400">
               No worries! Enter your email and we&apos;ll send you reset instructions.
             </p>
           </div>
@@ -101,8 +101,8 @@ export default function ForgotPasswordPage() {
           </Form>
 
           {/* Additional Info */}
-          <div className="mt-6 p-4 bg-blue-50 rounded-xl">
-            <p className="text-sm text-blue-900">
+          <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-100 dark:border-blue-800">
+            <p className="text-sm text-blue-900 dark:text-blue-300">
               <strong>Didn&apos;t receive the email?</strong>
               <br />
               Check your spam folder or try again with a different email address.
@@ -112,7 +112,7 @@ export default function ForgotPasswordPage() {
       </div>
 
       {/* Right Side - Branding/Image */}
-      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-gray-100">
+      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-gray-100 dark:bg-gray-800">
         {/* Background Image */}
         <Image
           src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2074"

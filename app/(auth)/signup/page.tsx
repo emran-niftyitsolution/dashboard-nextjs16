@@ -24,14 +24,14 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex bg-white dark:bg-gray-900 transition-colors">
       {/* Left Side - Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-white">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-white dark:bg-gray-900 transition-colors">
         <div className="w-full max-w-md">
           {/* Logo/Brand */}
           <div className="mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">Create Account</h2>
-            <p className="text-gray-600">Join us today and start managing your business</p>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">Create Account</h2>
+            <p className="text-gray-600 dark:text-gray-400">Join us today and start managing your business</p>
           </div>
 
           {/* Form */}
@@ -150,10 +150,10 @@ export default function SignupPage() {
           {/* Divider */}
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300"></div>
+              <div className="w-full border-t border-gray-300 dark:border-gray-700"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-white text-gray-500">Or sign up with</span>
+              <span className="px-4 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-400">Or sign up with</span>
             </div>
           </div>
 
@@ -185,9 +185,9 @@ export default function SignupPage() {
           </div>
 
           {/* Sign In Link */}
-          <p className="text-center text-gray-600">
+          <p className="text-center text-gray-600 dark:text-gray-400">
             Already have an account?{" "}
-            <Link href="/login" className="text-blue-600 hover:text-blue-700 font-medium">
+            <Link href="/login" className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium">
               Sign in
             </Link>
           </p>
@@ -195,7 +195,7 @@ export default function SignupPage() {
       </div>
 
       {/* Right Side - Branding/Image */}
-      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-gray-100">
+      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-gray-100 dark:bg-gray-800">
         {/* Background Image */}
         <Image
           src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070"
