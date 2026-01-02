@@ -14,7 +14,7 @@ export default function LoginPage() {
     console.log("Login values:", values);
     // Handle login logic here
     // After successful login, redirect to dashboard
-    router.push("/dashboard");
+    router.push("/");
   };
 
   return (

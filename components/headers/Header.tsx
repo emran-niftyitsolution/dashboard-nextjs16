@@ -28,9 +28,9 @@ const Header = ({ toggleCollapsed, openDrawer }: HeaderProps) => {
       // Redirect to login
       router.push("/login");
     } else if (key === "profile") {
-      router.push("/dashboard/profile");
+      router.push("/profile");
     } else if (key === "settings") {
-      router.push("/dashboard/settings");
+      router.push("/settings");
     }
   };
 

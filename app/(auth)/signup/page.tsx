@@ -20,7 +20,7 @@ export default function SignupPage() {
     console.log("Signup values:", values);
     // Handle signup logic here
     // After successful signup, redirect to dashboard
-    router.push("/dashboard");
+    router.push("/");
   };
 
   return (
