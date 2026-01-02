@@ -3,6 +3,7 @@ import { FiChevronDown, FiMenu } from "react-icons/fi";
 import { cn } from "../../lib/utils";
 type HeaderProps = {
   toggleCollapsed: () => void;
+  openDrawer: () => void;
 };
 
 const items: MenuProps["items"] = [
@@ -51,7 +52,7 @@ const items: MenuProps["items"] = [
   },
 ];
 
-const Header = ({ toggleCollapsed }: HeaderProps) => {
+const Header = ({ toggleCollapsed, openDrawer }: HeaderProps) => {
   return (
     <div
       className={cn(
@@ -59,7 +60,14 @@ const Header = ({ toggleCollapsed }: HeaderProps) => {
       )}
     >
       <div>
-        <FiMenu className="text-2xl cursor-pointer" onClick={toggleCollapsed} />
+        <FiMenu
+          className="hidden md:block text-2xl cursor-pointer"
+          onClick={toggleCollapsed}
+        />
+        <FiMenu
+          className="block md:hidden text-2xl cursor-pointer"
+          onClick={openDrawer}
+        />
       </div>
       <Dropdown menu={{ items }} trigger={["click"]}>
         <div className="flex items-center gap-2 cursor-pointer">

@@ -1,85 +1,134 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn, getFromLocalStorage, setToLocalStorage } from "@/lib/utils";
 import { Button, Drawer } from "antd";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FiX } from "react-icons/fi";
 import Footer from "../footers/Footer";
 import Header from "../headers/Header";
 import Sidebar from "../sidebars/Sidebar";
 
 const Dashboard = ({ children }: { children: React.ReactNode }) => {
+  // Track if this is the initial mount for each state independently
+  const isInitialMountCollapsed = useRef(true);
+  const isInitialMountFooter = useRef(true);
+
+  // Initialize state with default values (not from localStorage yet to avoid hydration mismatch)
   const [collapsed, setCollapsed] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(
-    typeof window !== "undefined" ? window.innerWidth < 768 : false
-  );
+  const [showFooter, setShowFooter] = useState(true);
 
+  // Load from localStorage after mount (client-side only)
   useEffect(() => {
-    // Check if screen is mobile size
-    const checkScreenSize = () => {
-      const mobile = window.innerWidth < 768;
-      setIsMobile(mobile);
-      if (!mobile) {
-        setDrawerOpen(false);
-      }
-    };
+    // Load collapsed state from localStorage
+    const savedCollapsed = getFromLocalStorage("sidebarCollapsed", false);
+    if (savedCollapsed !== collapsed) {
+      setCollapsed(savedCollapsed);
+    }
 
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-    return () => window.removeEventListener("resize", checkScreenSize);
-  }, []);
+    // Load showFooter state from localStorage
+    const savedShowFooter = getFromLocalStorage("showFooter", true);
+    if (savedShowFooter !== showFooter) {
+      setShowFooter(savedShowFooter);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Only run once on mount
+
+  // Save collapsed state to localStorage (skip initial mount)
+  useEffect(() => {
+    if (isInitialMountCollapsed.current) {
+      isInitialMountCollapsed.current = false;
+      return;
+    }
+    setToLocalStorage("sidebarCollapsed", collapsed);
+  }, [collapsed]);
+
+  // Save showFooter state to localStorage (skip initial mount)
+  useEffect(() => {
+    if (isInitialMountFooter.current) {
+      isInitialMountFooter.current = false;
+      return;
+    }
+    setToLocalStorage("showFooter", showFooter);
+  }, [showFooter]);
 
   const toggleMenu = () => {
-    if (isMobile) {
-      setDrawerOpen(!drawerOpen);
-    } else {
-      setCollapsed(!collapsed);
-    }
+    setCollapsed(!collapsed);
+  };
+
+  const openDrawer = () => {
+    setDrawerOpen(true);
   };
 
   const closeDrawer = () => {
     setDrawerOpen(false);
   };
 
+  const handleFooterToggle = (show: boolean) => {
+    setShowFooter(show);
+  };
+
   return (
     <div className="flex h-screen bg-white">
       {/* Desktop Sidebar */}
-      <Sidebar collapsed={collapsed} />
+      <div className="hidden md:block">
+        <Sidebar
+          collapsed={collapsed}
+          showFooter={showFooter}
+          onFooterToggle={handleFooterToggle}
+        />
+      </div>
 
       {/* Mobile Drawer */}
-      <Drawer
-        placement="left"
-        onClose={closeDrawer}
-        open={drawerOpen}
-        size={222}
-        styles={{
-          body: { padding: 0 },
-          header: { display: "none" },
-        }}
-      >
-        <div className="relative">
-          <Button
-            type="text"
-            icon={<FiX className="text-xl" />}
-            onClick={closeDrawer}
-            className="absolute top-4 right-4 z-50"
-            aria-label="Close menu"
-          />
-          <Sidebar collapsed={false} />
-        </div>
-      </Drawer>
+      <div className="block md:hidden">
+        <Drawer
+          placement="left"
+          onClose={closeDrawer}
+          open={drawerOpen}
+          size={222}
+          styles={{
+            body: { padding: 0 },
+            header: { display: "none" },
+          }}
+        >
+          <div className="relative">
+            <Button
+              type="text"
+              icon={<FiX className="text-xl" />}
+              onClick={closeDrawer}
+              className="absolute top-4 right-4 z-50"
+              aria-label="Close menu"
+            />
+            <Sidebar
+              collapsed={false}
+              showFooter={showFooter}
+              onFooterToggle={handleFooterToggle}
+            />
+          </div>
+        </Drawer>
+      </div>
 
       <div className="flex flex-col flex-1 overflow-hidden">
-        <Header toggleCollapsed={toggleMenu} />
+        <Header toggleCollapsed={toggleMenu} openDrawer={openDrawer} />
         <main
           className={cn(
-            "rounded-none border border-gray-100 md:rounded-tl-2xl md:rounded-bl-2xl flex-1 overflow-hidden overflow-y-auto bg-gray-100 p-4 md:p-6 shadow-inner"
+            "rounded-none border border-gray-100 md:rounded-tl-2xl flex-1 overflow-hidden overflow-y-auto bg-gray-100 p-4 md:p-6 shadow-inner",
+            {
+              "rounded-bl-none": !showFooter,
+              "md:rounded-bl-2xl": showFooter,
+            }
           )}
         >
           {children}
         </main>
-        <Footer />
+        <div
+          className={cn({
+            hidden: !showFooter,
+            block: showFooter,
+          })}
+        >
+          <Footer />
+        </div>
       </div>
     </div>
   );

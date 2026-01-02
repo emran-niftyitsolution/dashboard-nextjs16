@@ -7,7 +7,7 @@ import {
   PieChartOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Menu } from "antd";
+import { Menu, Switch } from "antd";
 import Sider from "antd/es/layout/Sider";
 
 type MenuItem = Required<MenuProps>["items"][number];
@@ -48,29 +48,53 @@ const items: MenuItem[] = [
 
 type SidebarProps = {
   collapsed: boolean;
+  showFooter?: boolean;
+  onFooterToggle?: (checked: boolean) => void;
 };
 
-const Sidebar = ({ collapsed = false }: SidebarProps) => {
+const Sidebar = ({
+  collapsed = false,
+  showFooter = true,
+  onFooterToggle,
+}: SidebarProps) => {
   return (
     <Sider
       collapsed={collapsed}
       theme="light"
       width={222}
-      className="hidden md:block"
+      className="flex md:flex-col h-screen"
     >
-      <div className="p-4 text-center">
-        <p className="text-lg font-medium">My Admin</p>
-      </div>
+      <div className="flex flex-col h-full">
+        <div className="p-4 text-center">
+          <p className="text-lg font-medium">My Admin</p>
+        </div>
 
-      <Menu
-        defaultSelectedKeys={["1"]}
-        defaultOpenKeys={["sub1"]}
-        mode="inline"
-        theme="light"
-        inlineCollapsed={collapsed}
-        items={items}
-        style={{ borderRight: "none" }}
-      />
+        <div className="flex-1 overflow-hidden overflow-y-auto">
+          <Menu
+            defaultSelectedKeys={["1"]}
+            defaultOpenKeys={["sub1"]}
+            mode="inline"
+            theme="light"
+            inlineCollapsed={collapsed}
+            items={items}
+            style={{ borderRight: "none" }}
+          />
+        </div>
+
+        {/* Footer Toggle */}
+        <div className="p-4">
+          <div className="flex items-center justify-between">
+            {!collapsed && (
+              <span className="text-sm text-gray-600">Show Footer</span>
+            )}
+            <Switch
+              checked={showFooter}
+              onChange={(checked) => onFooterToggle?.(checked)}
+              size="small"
+            />
+          </div>
+        </div>
+      </div>
     </Sider>
   );
 };
