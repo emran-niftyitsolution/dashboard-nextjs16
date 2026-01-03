@@ -29,6 +29,7 @@ Following [this section](https://tailwindcss.com/docs/dark-mode#toggling-dark-mo
 ```
 
 **What this does:**
+
 - Overrides the default `prefers-color-scheme` behavior
 - Makes `dark:*` utilities activate when `.dark` class is present on ancestor
 - The `&:where(.dark, .dark *)` selector ensures proper specificity
@@ -56,13 +57,12 @@ Following [this pattern](https://tailwindcss.com/docs/dark-mode#with-system-them
       }}
     />
   </head>
-  <body className="bg-white dark:bg-gray-900">
-    {children}
-  </body>
+  <body className="bg-white dark:bg-gray-900">{children}</body>
 </html>
 ```
 
 **Why this works:**
+
 - Runs **immediately** before page renders (no React, no hydration)
 - Checks localStorage for user preference
 - Falls back to system preference if no choice made
@@ -81,7 +81,7 @@ export default function ThemeProvider({ children }) {
     const savedTheme = localStorage.getItem("theme");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const shouldBeDark = savedTheme === "dark" || (!savedTheme && prefersDark);
-    
+
     setIsDarkMode(shouldBeDark);
     document.documentElement.classList.toggle("dark", shouldBeDark);
   }, []);
@@ -107,6 +107,7 @@ export default function ThemeProvider({ children }) {
 ```
 
 **Key points:**
+
 - Uses `localStorage.setItem("theme", "dark" | "light")` as per Tailwind docs
 - Uses `classList.toggle()` for cleaner code
 - Respects system preference when no localStorage value exists
@@ -133,12 +134,8 @@ import { useTheme } from "@/components/providers/ThemeProvider";
 
 function MyComponent() {
   const { isDarkMode, toggleDarkMode } = useTheme();
-  
-  return (
-    <button onClick={toggleDarkMode}>
-      {isDarkMode ? "☀️" : "🌙"}
-    </button>
-  );
+
+  return <button onClick={toggleDarkMode}>{isDarkMode ? "☀️" : "🌙"}</button>;
 }
 ```
 
@@ -151,7 +148,7 @@ import { Button, Card, Input } from "antd";
 <Card>
   <Input placeholder="Search" />
   <Button type="primary">Submit</Button>
-</Card>
+</Card>;
 ```
 
 ---
@@ -186,11 +183,11 @@ import { Button, Card, Input } from "antd";
 
 As per [Tailwind documentation](https://tailwindcss.com/docs/dark-mode#with-system-theme-support):
 
-| User Action | localStorage | Result |
-|-------------|--------------|--------|
-| Never clicked toggle | `null` | Uses system preference |
-| Clicked to dark | `"dark"` | Always dark |
-| Clicked to light | `"light"` | Always light |
+| User Action          | localStorage | Result                 |
+| -------------------- | ------------ | ---------------------- |
+| Never clicked toggle | `null`       | Uses system preference |
+| Clicked to dark      | `"dark"`     | Always dark            |
+| Clicked to light     | `"light"`    | Always light           |
 
 **Code that handles this:**
 
@@ -201,6 +198,7 @@ const shouldBeDark = savedTheme === "dark" || (!savedTheme && prefersDark);
 ```
 
 **Logic:**
+
 - If `savedTheme === "dark"` → Dark mode ✅
 - If `savedTheme === "light"` → Light mode ✅
 - If `savedTheme === null` and system is dark → Dark mode ✅
@@ -211,23 +209,28 @@ const shouldBeDark = savedTheme === "dark" || (!savedTheme && prefersDark);
 ## ✨ Benefits of This Approach
 
 ### 1. **No FOUC (Flash of Unstyled Content)**
+
 - Inline script runs before page renders
 - No visual "flash" when page loads
 
 ### 2. **System Preference Respect**
+
 - Automatically detects OS theme
 - Falls back to system when user hasn't chosen
 
 ### 3. **User Choice Persistence**
+
 - Stores preference in localStorage
 - Persists across page reloads and sessions
 
 ### 4. **Follows Tailwind Best Practices**
+
 - Uses official `@custom-variant` syntax
 - Matches documentation examples exactly
 - Future-proof for Tailwind updates
 
 ### 5. **Ant Design Integration**
+
 - Seamlessly combines with Ant Design's theme system
 - All components automatically themed
 - Single source of truth
@@ -258,7 +261,10 @@ Following [this example](https://tailwindcss.com/docs/dark-mode#using-a-data-att
 
 ```typescript
 // Update toggle function
-document.documentElement.setAttribute('data-theme', newDarkMode ? 'dark' : 'light');
+document.documentElement.setAttribute(
+  "data-theme",
+  newDarkMode ? "dark" : "light"
+);
 ```
 
 ### Add More Themes
@@ -276,6 +282,7 @@ document.documentElement.setAttribute('data-theme', newDarkMode ? 'dark' : 'ligh
 ### Issue: Dark mode not working
 
 **Check:**
+
 1. Is `@custom-variant` in `globals.css`?
 2. Is `.dark` class being added to `<html>`?
 3. Are you using `dark:` prefix in your classes?
@@ -317,4 +324,3 @@ document.documentElement.setAttribute('data-theme', newDarkMode ? 'dark' : 'ligh
 ---
 
 **🎉 Result:** A production-ready dark mode implementation that follows Tailwind CSS best practices and integrates seamlessly with Ant Design!
-

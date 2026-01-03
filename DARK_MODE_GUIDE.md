@@ -52,14 +52,14 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 export default function ThemeProvider({ children }) {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  
+
   const toggleDarkMode = () => {
     const newDarkMode = !isDarkMode;
     setIsDarkMode(newDarkMode);
-    
+
     // 1. Save to localStorage
     setToLocalStorage("darkMode", newDarkMode);
-    
+
     // 2. Toggle Tailwind dark class
     if (newDarkMode) {
       document.documentElement.classList.add("dark");
@@ -88,6 +88,7 @@ export default function ThemeProvider({ children }) {
 ```
 
 **Key Features:**
+
 - ✅ Single source of truth for dark mode state
 - ✅ Synchronizes both Ant Design and Tailwind CSS
 - ✅ Persists user preference in localStorage
@@ -125,6 +126,7 @@ export default function ThemeProvider({ children }) {
 ```
 
 **Key Features:**
+
 - ✅ Tailwind v4 class-based dark mode
 - ✅ CSS custom properties for theme colors
 - ✅ System preference fallback
@@ -151,6 +153,7 @@ export default function RootLayout({ children }) {
 ```
 
 **Key Features:**
+
 - ✅ `suppressHydrationWarning` prevents hydration mismatch
 - ✅ Body has dark mode classes for seamless transition
 - ✅ AntdRegistry for Ant Design styling in Next.js
@@ -215,7 +218,7 @@ import { useTheme } from "@/components/providers/ThemeProvider";
 
 function MyComponent() {
   const { isDarkMode, toggleDarkMode } = useTheme();
-  
+
   return (
     <button onClick={toggleDarkMode}>
       {isDarkMode ? "☀️ Light" : "🌙 Dark"}
@@ -234,7 +237,7 @@ import { Menu, Sider } from "antd";
 
 function Sidebar() {
   const { isDarkMode } = useTheme();
-  
+
   return (
     <Sider theme={isDarkMode ? "dark" : "light"}>
       <Menu theme={isDarkMode ? "dark" : "light"} items={menuItems} />
@@ -246,36 +249,40 @@ function Sidebar() {
 ## 🎯 Color Mapping Reference
 
 ### Text Colors
-| Light Mode | Dark Mode | Usage |
-|------------|-----------|-------|
+
+| Light Mode      | Dark Mode            | Usage                  |
+| --------------- | -------------------- | ---------------------- |
 | `text-gray-900` | `dark:text-gray-100` | Headings, primary text |
-| `text-gray-700` | `dark:text-gray-300` | Secondary headings |
-| `text-gray-600` | `dark:text-gray-400` | Body text |
-| `text-gray-500` | `dark:text-gray-400` | Muted text |
-| `text-gray-400` | `dark:text-gray-500` | Placeholder text |
+| `text-gray-700` | `dark:text-gray-300` | Secondary headings     |
+| `text-gray-600` | `dark:text-gray-400` | Body text              |
+| `text-gray-500` | `dark:text-gray-400` | Muted text             |
+| `text-gray-400` | `dark:text-gray-500` | Placeholder text       |
 
 ### Backgrounds
-| Light Mode | Dark Mode | Usage |
-|------------|-----------|-------|
-| `bg-white` | `dark:bg-gray-900` | Main container |
-| `bg-gray-100` | `dark:bg-gray-800` | Content area |
-| `bg-gray-50` | `dark:bg-gray-800` | Nested cards |
+
+| Light Mode    | Dark Mode          | Usage          |
+| ------------- | ------------------ | -------------- |
+| `bg-white`    | `dark:bg-gray-900` | Main container |
+| `bg-gray-100` | `dark:bg-gray-800` | Content area   |
+| `bg-gray-50`  | `dark:bg-gray-800` | Nested cards   |
 
 ### Borders
-| Light Mode | Dark Mode | Usage |
-|------------|-----------|-------|
-| `border-gray-300` | `dark:border-gray-600` | Input borders |
-| `border-gray-200` | `dark:border-gray-700` | Dividers |
+
+| Light Mode        | Dark Mode              | Usage          |
+| ----------------- | ---------------------- | -------------- |
+| `border-gray-300` | `dark:border-gray-600` | Input borders  |
+| `border-gray-200` | `dark:border-gray-700` | Dividers       |
 | `border-gray-100` | `dark:border-gray-800` | Subtle borders |
 
 ### Accent Colors
-| Color | Light | Dark | Usage |
-|-------|-------|------|-------|
-| **Blue** | `bg-blue-100 text-blue-600` | `dark:bg-blue-900/20 dark:text-blue-400` | Info, primary |
-| **Green** | `bg-green-100 text-green-600` | `dark:bg-green-900/20 dark:text-green-400` | Success |
-| **Red** | `bg-red-100 text-red-600` | `dark:bg-red-900/20 dark:text-red-400` | Error, danger |
-| **Yellow** | `bg-yellow-100 text-yellow-600` | `dark:bg-yellow-900/30 dark:text-yellow-400` | Warning |
-| **Purple** | `bg-purple-100 text-purple-600` | `dark:bg-purple-900/20 dark:text-purple-400` | Accent |
+
+| Color      | Light                           | Dark                                         | Usage         |
+| ---------- | ------------------------------- | -------------------------------------------- | ------------- |
+| **Blue**   | `bg-blue-100 text-blue-600`     | `dark:bg-blue-900/20 dark:text-blue-400`     | Info, primary |
+| **Green**  | `bg-green-100 text-green-600`   | `dark:bg-green-900/20 dark:text-green-400`   | Success       |
+| **Red**    | `bg-red-100 text-red-600`       | `dark:bg-red-900/20 dark:text-red-400`       | Error, danger |
+| **Yellow** | `bg-yellow-100 text-yellow-600` | `dark:bg-yellow-900/30 dark:text-yellow-400` | Warning       |
+| **Purple** | `bg-purple-100 text-purple-600` | `dark:bg-purple-900/20 dark:text-purple-400` | Accent        |
 
 ## ✨ Best Practices
 
@@ -327,6 +334,7 @@ function Sidebar() {
 ### 4. Test Both Modes
 
 Always test your UI in both light and dark modes:
+
 - Check text contrast
 - Verify hover states
 - Ensure icons are visible
@@ -381,4 +389,3 @@ const { isDarkMode } = useTheme();
 ---
 
 **🎉 Result**: A seamless, performant, and maintainable dark mode implementation that combines the best of both Ant Design and Tailwind CSS!
-

@@ -59,14 +59,14 @@ const Header = ({ toggleCollapsed, openDrawer }: HeaderProps) => {
     },
   ];
   return (
-    <div className="px-4 md:px-10 py-4 flex justify-between items-center sticky top-0 z-10 bg-white dark:bg-gray-900 transition-colors duration-200">
+    <div className="sticky top-0 z-10 flex items-center justify-between bg-white px-4 py-4 transition-colors duration-200 md:px-10 dark:bg-gray-900">
       <div>
         <FiMenu
-          className="hidden md:block text-2xl cursor-pointer text-gray-700 dark:text-gray-300"
+          className="hidden cursor-pointer text-2xl text-gray-700 md:block dark:text-gray-300"
           onClick={toggleCollapsed}
         />
         <FiMenu
-          className="block md:hidden text-2xl cursor-pointer text-gray-700 dark:text-gray-300"
+          className="block cursor-pointer text-2xl text-gray-700 md:hidden dark:text-gray-300"
           onClick={openDrawer}
         />
       </div>
@@ -93,9 +93,9 @@ const Header = ({ toggleCollapsed, openDrawer }: HeaderProps) => {
           trigger={["click"]}
           placement="bottomRight"
         >
-          <div className="flex items-center gap-2 cursor-pointer">
+          <div className="flex cursor-pointer items-center gap-2">
             <Avatar>A</Avatar>
-            <p className="hidden md:block text-sm font-medium text-gray-900 dark:text-gray-100">
+            <p className="hidden text-sm font-medium text-gray-900 md:block dark:text-gray-100">
               John Doe
             </p>
             <FiChevronDown className="text-sm text-gray-700 dark:text-gray-300" />

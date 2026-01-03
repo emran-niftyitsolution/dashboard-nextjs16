@@ -44,7 +44,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-white text-gray-900 antialiased transition-colors dark:bg-gray-900 dark:text-gray-100`}
       >
         <AntdRegistry>
           <ThemeProvider>{children}</ThemeProvider>

@@ -46,12 +46,12 @@ export default function ProfilePage() {
         <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
           Profile Settings
         </h1>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+        <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
           Manage your personal information and preferences
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Left Column - Profile Card */}
         <div className="lg:col-span-1">
           <Card>
@@ -73,19 +73,19 @@ export default function ProfilePage() {
                     type="primary"
                     shape="circle"
                     icon={<FiCamera />}
-                    className="absolute bottom-0 right-0"
+                    className="absolute right-0 bottom-0"
                     size="small"
                   />
                 </Upload>
               </div>
-              <h2 className="text-xl font-semibold mt-4 text-gray-900 dark:text-gray-100">
+              <h2 className="mt-4 text-xl font-semibold text-gray-900 dark:text-gray-100">
                 John Doe
               </h2>
-              <p className="text-gray-500 dark:text-gray-400 text-sm">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 john.doe@example.com
               </p>
               <div className="mt-4 w-full">
-                <div className="flex items-center justify-between py-2 border-b border-gray-200 dark:border-gray-700">
+                <div className="flex items-center justify-between border-b border-gray-200 py-2 dark:border-gray-700">
                   <span className="text-sm text-gray-600 dark:text-gray-400">
                     User ID
                   </span>
@@ -93,7 +93,7 @@ export default function ProfilePage() {
                     #12345
                   </span>
                 </div>
-                <div className="flex items-center justify-between py-2 border-b border-gray-200 dark:border-gray-700">
+                <div className="flex items-center justify-between border-b border-gray-200 py-2 dark:border-gray-700">
                   <span className="text-sm text-gray-600 dark:text-gray-400">
                     Role
                   </span>
@@ -164,7 +164,7 @@ export default function ProfilePage() {
               }}
               size="large"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <Form.Item
                   name="firstName"
                   label="First Name"
@@ -194,7 +194,7 @@ export default function ProfilePage() {
                 </Form.Item>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <Form.Item
                   name="email"
                   label="Email Address"
@@ -228,7 +228,7 @@ export default function ProfilePage() {
                 </Form.Item>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <Form.Item name="company" label="Company">
                   <Input
                     placeholder="Acme Corporation"
@@ -247,7 +247,7 @@ export default function ProfilePage() {
                 </Form.Item>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <Form.Item name="country" label="Country">
                   <Select className="rounded-xl" placeholder="Select country">
                     <Select.Option value="United States">
@@ -287,7 +287,7 @@ export default function ProfilePage() {
                 />
               </Form.Item>
 
-              <div className="flex gap-3 justify-end mt-6">
+              <div className="mt-6 flex justify-end gap-3">
                 <Button
                   size="large"
                   className="rounded-xl"
@@ -314,7 +314,7 @@ export default function ProfilePage() {
           {/* Security Section */}
           <Card title="Security" className="mt-6">
             <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
+              <div className="flex items-center justify-between rounded-xl bg-gray-50 p-4 dark:bg-gray-800">
                 <div>
                   <h4 className="font-medium text-gray-900 dark:text-gray-100">
                     Password
@@ -325,7 +325,7 @@ export default function ProfilePage() {
                 </div>
                 <Button className="rounded-xl">Change Password</Button>
               </div>
-              <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
+              <div className="flex items-center justify-between rounded-xl bg-gray-50 p-4 dark:bg-gray-800">
                 <div>
                   <h4 className="font-medium text-gray-900 dark:text-gray-100">
                     Two-Factor Authentication
@@ -336,7 +336,7 @@ export default function ProfilePage() {
                 </div>
                 <Button className="rounded-xl">Enable 2FA</Button>
               </div>
-              <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
+              <div className="flex items-center justify-between rounded-xl bg-gray-50 p-4 dark:bg-gray-800">
                 <div>
                   <h4 className="font-medium text-gray-900 dark:text-gray-100">
                     Active Sessions

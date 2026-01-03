@@ -2,7 +2,6 @@
 
 import { ConfigProvider, theme } from "antd";
 import { createContext, useContext, useEffect, useState } from "react";
-import { getFromLocalStorage, setToLocalStorage } from "../../lib/utils";
 
 type ThemeContextType = {
   isDarkMode: boolean;
@@ -21,29 +20,35 @@ export default function ThemeProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  // Initialize state with a function to safely read from localStorage
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window === "undefined") return false;
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    return savedTheme === "dark" || (!savedTheme && prefersDark);
+  });
   const [mounted, setMounted] = useState(false);
 
-  // Load dark mode preference from localStorage after mount
+  // Set mounted flag after mount to prevent hydration mismatch
+  // This is necessary for Next.js SSR compatibility
   useEffect(() => {
-    // Check localStorage or system preference
-    const savedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    
-    // Determine if dark mode should be enabled
-    const shouldBeDark = savedTheme === "dark" || (!savedTheme && prefersDark);
-    
-    setIsDarkMode(shouldBeDark);
+    // This setState is intentional to prevent hydration mismatch
+    // Disable ESLint rule for this legitimate use case
+    /* eslint-disable-next-line */
     setMounted(true);
-
-    // Apply to document for Tailwind dark mode
-    document.documentElement.classList.toggle("dark", shouldBeDark);
   }, []);
+
+  // Apply dark mode class to document when isDarkMode changes
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", isDarkMode);
+  }, [isDarkMode]);
 
   const toggleDarkMode = () => {
     const newDarkMode = !isDarkMode;
     setIsDarkMode(newDarkMode);
-    
+
     // Store theme preference (using 'theme' key as per Tailwind docs)
     localStorage.setItem("theme", newDarkMode ? "dark" : "light");
 
@@ -82,10 +87,6 @@ export default function ThemeProvider({
               colorBgContainer: isDarkMode ? "#1f2937" : "#ffffff",
               colorBorder: isDarkMode ? "#374151" : "#d9d9d9",
             },
-            TimePicker: {
-              colorBgContainer: isDarkMode ? "#1f2937" : "#ffffff",
-              colorBorder: isDarkMode ? "#374151" : "#d9d9d9",
-            },
             Mentions: {
               colorBgContainer: isDarkMode ? "#1f2937" : "#ffffff",
               colorBorder: isDarkMode ? "#374151" : "#d9d9d9",
@@ -98,4 +99,3 @@ export default function ThemeProvider({
     </ThemeContext.Provider>
   );
 }
-

@@ -41,22 +41,26 @@ export default function SettingsPage() {
     <div className="space-y-6">
       {/* Page Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Settings</h1>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+          Settings
+        </h1>
+        <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
           Manage your account settings and preferences
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Notifications Settings */}
         <Card
           title={
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 dark:bg-blue-900">
                 <FiBell className="text-xl text-blue-600 dark:text-blue-400" />
               </div>
               <div>
-                <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">Notifications</h3>
+                <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">
+                  Notifications
+                </h3>
                 <p className="text-xs text-gray-500 dark:text-gray-400">
                   Manage how you receive notifications
                 </p>
@@ -64,7 +68,6 @@ export default function SettingsPage() {
             </div>
           }
         >
-
           <Divider />
 
           <div className="space-y-4">
@@ -72,7 +75,9 @@ export default function SettingsPage() {
               <div className="flex items-center gap-3">
                 <FiMail className="text-gray-400" />
                 <div>
-                  <p className="font-medium text-gray-900 dark:text-gray-100">Email Notifications</p>
+                  <p className="font-medium text-gray-900 dark:text-gray-100">
+                    Email Notifications
+                  </p>
                   <p className="text-xs text-gray-500 dark:text-gray-400">
                     Receive notifications via email
                   </p>
@@ -88,7 +93,9 @@ export default function SettingsPage() {
               <div className="flex items-center gap-3">
                 <FiBell className="text-gray-400" />
                 <div>
-                  <p className="font-medium text-gray-900 dark:text-gray-100">Push Notifications</p>
+                  <p className="font-medium text-gray-900 dark:text-gray-100">
+                    Push Notifications
+                  </p>
                   <p className="text-xs text-gray-500 dark:text-gray-400">
                     Receive push notifications on your device
                   </p>
@@ -119,10 +126,7 @@ export default function SettingsPage() {
                   Receive promotional offers and updates
                 </p>
               </div>
-              <Switch
-                checked={marketingEmails}
-                onChange={setMarketingEmails}
-              />
+              <Switch checked={marketingEmails} onChange={setMarketingEmails} />
             </div>
 
             <div className="flex items-center justify-between">
@@ -141,11 +145,13 @@ export default function SettingsPage() {
         <Card
           title={
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-red-100 dark:bg-red-900 flex items-center justify-center">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-red-100 dark:bg-red-900">
                 <FiLock className="text-xl text-red-600 dark:text-red-400" />
               </div>
               <div>
-                <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">Privacy & Security</h3>
+                <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">
+                  Privacy & Security
+                </h3>
                 <p className="text-xs text-gray-500 dark:text-gray-400">
                   Control your privacy and security settings
                 </p>
@@ -153,18 +159,17 @@ export default function SettingsPage() {
             </div>
           }
         >
-
           <Divider />
 
           <div className="space-y-4">
-            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
+            <div className="rounded-xl bg-gray-50 p-4 dark:bg-gray-800">
               <div className="flex items-start gap-3">
-                <FiShield className="text-xl text-gray-600 mt-1" />
+                <FiShield className="mt-1 text-xl text-gray-600" />
                 <div className="flex-1">
-                  <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-1">
+                  <h4 className="mb-1 font-medium text-gray-900 dark:text-gray-100">
                     Two-Factor Authentication
                   </h4>
-                  <p className="text-sm text-gray-500 mb-3">
+                  <p className="mb-3 text-sm text-gray-500">
                     Secure your account with 2FA
                   </p>
                   <Button className="rounded-xl" type="primary">
@@ -174,14 +179,14 @@ export default function SettingsPage() {
               </div>
             </div>
 
-            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
+            <div className="rounded-xl bg-gray-50 p-4 dark:bg-gray-800">
               <div className="flex items-start gap-3">
-                <FiEye className="text-xl text-gray-600 mt-1" />
+                <FiEye className="mt-1 text-xl text-gray-600" />
                 <div className="flex-1">
-                  <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-1">
+                  <h4 className="mb-1 font-medium text-gray-900 dark:text-gray-100">
                     Profile Visibility
                   </h4>
-                  <p className="text-sm text-gray-500 mb-3">
+                  <p className="mb-3 text-sm text-gray-500">
                     Control who can see your profile
                   </p>
                   <Select
@@ -198,14 +203,14 @@ export default function SettingsPage() {
               </div>
             </div>
 
-            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
+            <div className="rounded-xl bg-gray-50 p-4 dark:bg-gray-800">
               <div className="flex items-start gap-3">
-                <FiLock className="text-xl text-gray-600 mt-1" />
+                <FiLock className="mt-1 text-xl text-gray-600" />
                 <div className="flex-1">
-                  <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-1">
+                  <h4 className="mb-1 font-medium text-gray-900 dark:text-gray-100">
                     Active Sessions
                   </h4>
-                  <p className="text-sm text-gray-500 mb-3">
+                  <p className="mb-3 text-sm text-gray-500">
                     Manage your active login sessions
                   </p>
                   <Button className="rounded-xl">View All Sessions</Button>
@@ -219,11 +224,13 @@ export default function SettingsPage() {
         <Card
           title={
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-green-100 dark:bg-green-900 flex items-center justify-center">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 dark:bg-green-900">
                 <FiGlobe className="text-xl text-green-600 dark:text-green-400" />
               </div>
               <div>
-                <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">Language & Region</h3>
+                <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">
+                  Language & Region
+                </h3>
                 <p className="text-xs text-gray-500 dark:text-gray-400">
                   Customize your language and regional settings
                 </p>
@@ -231,12 +238,11 @@ export default function SettingsPage() {
             </div>
           }
         >
-
           <Divider />
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Language
               </label>
               <Select
@@ -256,7 +262,7 @@ export default function SettingsPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Currency
               </label>
               <Select
@@ -276,7 +282,7 @@ export default function SettingsPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Date Format
               </label>
               <Select
@@ -294,7 +300,7 @@ export default function SettingsPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Timezone
               </label>
               <Select
@@ -316,9 +322,11 @@ export default function SettingsPage() {
             <Button
               type="primary"
               size="large"
-              className="w-full rounded-xl mt-4"
+              className="mt-4 w-full rounded-xl"
               onClick={handleSavePreferences}
-              style={{ background: "linear-gradient(to right, #3b82f6, #8b5cf6)" }}
+              style={{
+                background: "linear-gradient(to right, #3b82f6, #8b5cf6)",
+              }}
             >
               Save Preferences
             </Button>
@@ -329,11 +337,13 @@ export default function SettingsPage() {
         <Card
           title={
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-100 dark:bg-purple-900">
                 <FiDatabase className="text-xl text-purple-600 dark:text-purple-400" />
               </div>
               <div>
-                <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">Data & Storage</h3>
+                <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">
+                  Data & Storage
+                </h3>
                 <p className="text-xs text-gray-500 dark:text-gray-400">
                   Manage your data and storage options
                 </p>
@@ -341,12 +351,11 @@ export default function SettingsPage() {
             </div>
           }
         >
-
           <Divider />
 
           <div className="space-y-4">
-            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
-              <div className="flex items-center justify-between mb-2">
+            <div className="rounded-xl bg-gray-50 p-4 dark:bg-gray-800">
+              <div className="mb-2 flex items-center justify-between">
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   Storage Used
                 </span>
@@ -354,19 +363,23 @@ export default function SettingsPage() {
                   2.4 GB / 10 GB
                 </span>
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
+              <div className="h-2 w-full rounded-full bg-gray-200">
                 <div
-                  className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full"
+                  className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
                   style={{ width: "24%" }}
                 ></div>
               </div>
             </div>
 
             <div className="space-y-3">
-              <div className="flex items-center justify-between p-3 border border-gray-200 dark:border-gray-700 rounded-xl">
+              <div className="flex items-center justify-between rounded-xl border border-gray-200 p-3 dark:border-gray-700">
                 <div>
-                  <p className="font-medium text-gray-900 dark:text-gray-100">Cache</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">142 MB</p>
+                  <p className="font-medium text-gray-900 dark:text-gray-100">
+                    Cache
+                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                    142 MB
+                  </p>
                 </div>
                 <Button
                   size="small"
@@ -377,20 +390,28 @@ export default function SettingsPage() {
                 </Button>
               </div>
 
-              <div className="flex items-center justify-between p-3 border border-gray-200 dark:border-gray-700 rounded-xl">
+              <div className="flex items-center justify-between rounded-xl border border-gray-200 p-3 dark:border-gray-700">
                 <div>
-                  <p className="font-medium text-gray-900 dark:text-gray-100">Documents</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">1.8 GB</p>
+                  <p className="font-medium text-gray-900 dark:text-gray-100">
+                    Documents
+                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                    1.8 GB
+                  </p>
                 </div>
                 <Button size="small" className="rounded-xl">
                   Manage
                 </Button>
               </div>
 
-              <div className="flex items-center justify-between p-3 border border-gray-200 dark:border-gray-700 rounded-xl">
+              <div className="flex items-center justify-between rounded-xl border border-gray-200 p-3 dark:border-gray-700">
                 <div>
-                  <p className="font-medium text-gray-900 dark:text-gray-100">Media Files</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">486 MB</p>
+                  <p className="font-medium text-gray-900 dark:text-gray-100">
+                    Media Files
+                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                    486 MB
+                  </p>
                 </div>
                 <Button size="small" className="rounded-xl">
                   Manage
@@ -424,4 +445,3 @@ export default function SettingsPage() {
     </div>
   );
 }
-

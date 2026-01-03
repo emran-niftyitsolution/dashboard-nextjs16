@@ -62,13 +62,13 @@ const Sidebar = ({
     <Sider
       collapsed={collapsed}
       width={222}
-      className="flex md:flex-col h-screen bg-white dark:bg-gray-900 transition-colors duration-200"
+      className="flex h-screen bg-white transition-colors duration-200 md:flex-col dark:bg-gray-900"
     >
-      <div className="flex flex-col h-full">
-        <div className="p-4 text-center flex gap-2 items-center justify-center">
+      <div className="flex h-full flex-col">
+        <div className="flex items-center justify-center gap-2 p-4 text-center">
           <TbBrandReact className="text-2xl text-purple-500 dark:text-purple-400" />
           {!collapsed && (
-            <p className="text-lg font-bold uppercase text-gray-900 dark:text-gray-100">
+            <p className="text-lg font-bold text-gray-900 uppercase dark:text-gray-100">
               Dashify
             </p>
           )}
@@ -81,7 +81,7 @@ const Sidebar = ({
             mode="inline"
             inlineCollapsed={collapsed}
             items={items}
-            className="bg-white dark:bg-gray-900 border-r-0"
+            className="border-r-0 bg-white dark:bg-gray-900"
           />
         </div>
 
