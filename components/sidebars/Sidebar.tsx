@@ -81,7 +81,7 @@ const Sidebar = ({
             mode="inline"
             inlineCollapsed={collapsed}
             items={items}
-            className="border-r-0 bg-white dark:bg-gray-900"
+            className="border-r-0"
           />
         </div>
 
