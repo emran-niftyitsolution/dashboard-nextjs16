@@ -92,6 +92,7 @@ const Header = ({ toggleCollapsed, openDrawer }: HeaderProps) => {
           menu={{ items, onClick: handleMenuClick }}
           trigger={["click"]}
           placement="bottomRight"
+          styles={{ root: { minWidth: 200 } }}
         >
           <div className="flex cursor-pointer items-center gap-2">
             <Avatar>A</Avatar>
